@@ -92,8 +92,16 @@ namespace ReproductorMusica.Utilidades
         {
             try
             {
-                string rutaDot = nombreArchivo + ".dot";
-                string rutaPng = nombreArchivo + ".png";
+                // Asegurar que la carpeta "Reportes" exista
+                string carpeta = "Reportes";
+                if (!Directory.Exists(carpeta))
+                {
+                    Directory.CreateDirectory(carpeta);
+                }
+
+                // Guardar dentro de la carpeta Reportes
+                string rutaDot = Path.Combine(carpeta, nombreArchivo + ".dot");
+                string rutaPng = Path.Combine(carpeta, nombreArchivo + ".png");
                 
                 File.WriteAllText(rutaDot, codigoDot);
 
