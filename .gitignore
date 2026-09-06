@@ -1,0 +1,6 @@
+# Archivos de Visual Studio que no se suben
+.vs/
+bin/
+obj/
+*.user
+*.suo
