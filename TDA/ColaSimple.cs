@@ -61,22 +61,8 @@ namespace ReproductorMusica.Estructuras
 
             while (actual != null)
             {
-                int duracion = actual.Dato.Duracion;
-                
-                // Si la duración es 0 o no viene, aplicamos los promedios del enunciado
-                if (duracion <= 0)
-                {
-                    switch (actual.Dato.Genero.ToLower())
-                    {
-                        case "pop": duracion = 3; break;
-                        case "rock": duracion = 4; break;
-                        case "jazz": duracion = 5; break;
-                        case "clásica":
-                        case "clasica": duracion = 8; break;
-                    }
-                }
-                
-                tiempoTotal += duracion;
+                // La duración ya viene normalizada desde que se lee el JSON
+                tiempoTotal += actual.Dato.Duracion;
                 actual = actual.Siguiente;
             }
 

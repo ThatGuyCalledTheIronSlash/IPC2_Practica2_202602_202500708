@@ -2,12 +2,13 @@ using System;
 
 namespace ReproductorMusica.Modelo
 {
+    //constructor de Canciones
     public class Cancion
     {
         public string Titulo { get; set; }
         public string Artista { get; set; }
         public string Genero { get; set; }
-        public int Duracion { get; set; } // En minutos
+        public int Duracion { get; set; }
 
 
 //Atributos de Cancion
@@ -16,7 +17,7 @@ namespace ReproductorMusica.Modelo
             Titulo = titulo;
             Artista = artista;
             Genero = genero;
-            Duracion = duracion;
+            Duracion = duracion; //en minutos
         }
 
 // Convertir a cadena con ToString para que sea fácil mostrarla en la Interfaz Gráfica

@@ -13,7 +13,9 @@ namespace ReproductorMusica.Utilidades
         {
             string dot = "digraph Cola {\n";
             dot += "rankdir=LR;\n"; // Formato horizontal
-            dot += "node [shape=box, style=filled, color=lightblue];\n";
+            dot += "graph [bgcolor=\"#2D2D32\"];\n"; // Fondo oscuro
+            dot += "node [shape=box, style=\"rounded,filled\", fillcolor=\"#1E1E23\", color=\"#007ACC\", fontcolor=\"white\"];\n";
+            dot += "edge [color=\"white\"];\n";
 
             NodoCola actual = cola.ObtenerPrimero();
             if (actual == null)
@@ -24,10 +26,10 @@ namespace ReproductorMusica.Utilidades
             {
                 while (actual != null)
                 {
-                    // Usamos GetHashCode() para que cada nodo tenga un ID interno único
-                    // y el "label" es lo que se ve dibujado (el título de la canción)
+                    // Usamos GetHashCode() para que cada nodo tenga un ID interno único y el "label" es lo que se ve dibujado (el título de la canción)
                     string idActual = "nodo" + actual.GetHashCode();
-                    dot += $"{idActual} [label=\"{actual.Dato.Titulo}\"];\n";
+                    string tituloEscapado = actual.Dato.Titulo.Replace("\"", "\\\"");
+                    dot += $"{idActual} [label=\"{tituloEscapado}\"];\n";
 
                     if (actual.Siguiente != null)
                     {
@@ -46,7 +48,9 @@ namespace ReproductorMusica.Utilidades
         public static void GenerarGraficoArbol(ArbolBinario arbol)
         {
             string dot = "digraph Arbol {\n";
-            dot += "node [shape=ellipse, style=filled, color=lightgreen];\n";
+            dot += "graph [bgcolor=\"#2D2D32\"];\n"; // Fondo oscuro
+            dot += "node [shape=ellipse, style=\"filled\", fillcolor=\"#1E1E23\", color=\"#007ACC\", fontcolor=\"white\"];\n";
+            dot += "edge [color=\"white\"];\n";
 
             NodoArbol raiz = arbol.ObtenerRaiz();
             if (raiz == null)
@@ -69,7 +73,8 @@ namespace ReproductorMusica.Utilidades
             string resultado = "";
             string idNodo = "nodo" + nodo.GetHashCode();
             
-            resultado += $"{idNodo} [label=\"{nodo.Dato.Titulo}\"];\n";
+            string tituloEscapado = nodo.Dato.Titulo.Replace("\"", "\\\"");
+            resultado += $"{idNodo} [label=\"{tituloEscapado}\"];\n";
 
             if (nodo.Izquierdo != null)
             {
